@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <radialGradient id="portraitGrad" cx="32%" cy="18%" r="95%">
+      <stop offset="0%" stop-color="#3E2856"/>
+      <stop offset="55%" stop-color="#251536"/>
+      <stop offset="100%" stop-color="#170D22"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="1000" fill="url(#portraitGrad)"/>
+  <circle cx="400" cy="430" r="150" fill="none" stroke="#8E5FC0" stroke-opacity="0.35" stroke-width="1.5"/>
+  <circle cx="400" cy="430" r="112" fill="#2E1A3F"/>
+  <text x="400" y="460" font-family="Georgia, 'Times New Roman', serif" font-size="88" fill="#C9AEE4" text-anchor="middle">MD</text>
+  <text x="400" y="640" font-family="Arial, Helvetica, sans-serif" font-size="17" letter-spacing="2" fill="#8E7A99" text-anchor="middle">FOTO EM BREVE</text>
+</svg>
