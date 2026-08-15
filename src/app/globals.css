@@ -216,6 +216,102 @@ img {
   object-fit: cover;
 }
 
+/* Faixa (marquee) entre o hero e o Sobre */
+.faixa {
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--bg-dark-2) 0%, #241432 100%);
+  border-top: 1px solid rgba(201, 174, 228, 0.16);
+  border-bottom: 1px solid rgba(201, 174, 228, 0.16);
+  padding: clamp(16px, 2vw, 22px) 0;
+}
+
+.faixa__track {
+  display: flex;
+  width: max-content;
+  animation: faixa-scroll 46s linear infinite;
+}
+
+/* deixa ler e clicar o link do Google sem correr atras */
+.faixa:hover .faixa__track,
+.faixa:focus-within .faixa__track {
+  animation-play-state: paused;
+}
+
+.faixa__grupo {
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+}
+
+.faixa__item {
+  display: flex;
+  align-items: center;
+  font-family: var(--font-cormorant), serif;
+  font-size: clamp(15px, 1.6vw, 18px);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: #d6c7e4;
+}
+
+.faixa__ponto {
+  display: block;
+  width: 4px;
+  height: 4px;
+  margin: 0 clamp(26px, 3.4vw, 46px);
+  border-radius: 50%;
+  background: var(--accent-hover);
+  opacity: 0.55;
+}
+
+.faixa__nota {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.faixa__nota-valor {
+  font-family: var(--font-cormorant), serif;
+  font-size: clamp(30px, 3.6vw, 40px);
+  line-height: 1;
+  color: var(--text-light-2);
+}
+
+.faixa__nota-texto {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.faixa__estrelas {
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  color: var(--accent-hover);
+}
+
+.faixa__nota-label {
+  font-size: 12.5px;
+  color: #b3a2c1;
+}
+
+.faixa__nota:hover .faixa__nota-label {
+  color: var(--link-hover);
+}
+
+@keyframes faixa-scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .faixa__track {
+    animation: none;
+  }
+}
+
 /* Sobre */
 .sobre {
   background: var(--bg-light);
@@ -791,21 +887,68 @@ img {
 }
 
 .footer__map {
+  position: relative;
   display: block;
   margin-top: 14px;
   width: 100%;
   max-width: 380px;
   border: 1px solid rgba(201, 174, 228, 0.22);
-  border-radius: 6px;
+  border-radius: 10px;
   overflow: hidden;
+  text-decoration: none;
+  box-shadow: 0 18px 36px -24px rgba(0, 0, 0, 0.9);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
+.footer__map:hover {
+  border-color: rgba(201, 174, 228, 0.45);
+  box-shadow: 0 20px 40px -22px rgba(0, 0, 0, 1);
+}
+
+/* o embed do OSM e um mapa claro; invert + hue-rotate devolve os tons
+   escuros sem estourar as cores do pin, casando com o rodape */
 .footer__map iframe {
   width: 100%;
-  height: 180px;
+  height: 190px;
   border: 0;
   display: block;
-  filter: grayscale(0.35) contrast(0.95);
+  filter: invert(0.92) hue-rotate(180deg) saturate(0.55) contrast(0.92) brightness(1.05);
+  transition: filter 0.2s ease;
+}
+
+.footer__map:hover iframe {
+  filter: invert(0.92) hue-rotate(180deg) saturate(0.7) contrast(0.95) brightness(1.12);
+}
+
+.footer__map-bar {
+  position: absolute;
+  inset: auto 0 0 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 14px;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  color: var(--text-light);
+  background: linear-gradient(180deg, rgba(27, 15, 37, 0) 0%, rgba(27, 15, 37, 0.92) 55%);
+}
+
+.footer__map-pin {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent-hover);
+  box-shadow: 0 0 0 4px rgba(168, 127, 209, 0.28);
+}
+
+.footer__map-seta {
+  margin-left: auto;
+  color: var(--link);
+  transition: transform 0.2s ease;
+}
+
+.footer__map:hover .footer__map-seta {
+  transform: translateX(3px);
 }
 
 .footer__attendance {

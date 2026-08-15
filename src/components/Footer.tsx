@@ -1,3 +1,4 @@
+import { consultorio, mapsLink, osmEmbed } from "@/lib/consultorio";
 import { waLink, waMessages } from "@/lib/whatsapp";
 
 export default function Footer() {
@@ -36,21 +37,28 @@ export default function Footer() {
             <div>
               <p className="footer__label">Consultório</p>
               <p className="footer__address">
-                R. Paissandu, 1254 — Petrópolis
+                {consultorio.rua}
                 <br />
-                Passo Fundo/RS · 99051-240
+                {consultorio.cidade}
               </p>
               <a
-                href="https://www.google.com/maps/search/?api=1&query=R.%20Paissandu%2C%201254%20-%20Petr%C3%B3polis%2C%20Passo%20Fundo%20-%20RS%2C%2099051-240"
+                href={mapsLink}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="footer__map"
               >
                 <iframe
                   title="Mapa do consultório — Petrópolis, Passo Fundo/RS"
-                  src="https://www.openstreetmap.org/export/embed.html?bbox=-52.4055%2C-28.2618%2C-52.3925%2C-28.2502&layer=mapnik&marker=-28.2560%2C-52.3990"
+                  src={osmEmbed}
                   loading="lazy"
                 />
+                <span className="footer__map-bar">
+                  <span className="footer__map-pin" aria-hidden="true" />
+                  Ver rota no Google Maps
+                  <span className="footer__map-seta" aria-hidden="true">
+                    →
+                  </span>
+                </span>
               </a>
             </div>
             <div>
