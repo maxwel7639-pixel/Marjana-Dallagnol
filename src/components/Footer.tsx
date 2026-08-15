@@ -6,12 +6,14 @@ export default function Footer() {
     <footer id="contato" className="footer">
       <div className="footer__inner">
         <div className="footer__grid">
-          <div>
-            <h2 className="footer__title">Marjana Dallagnol</h2>
-            <p className="footer__subtitle">Espaço Terapêutico</p>
-            <p className="footer__quote">
-              Você não precisa continuar em segundo lugar para caber na sua própria vida.
-            </p>
+          <div className="footer__intro">
+            <div>
+              <h2 className="footer__title">Marjana Dallagnol</h2>
+              <p className="footer__subtitle">Espaço Terapêutico</p>
+              <p className="footer__quote">
+                Você não precisa continuar em segundo lugar para caber na sua própria vida.
+              </p>
+            </div>
             <a
               href={waLink(waMessages.footer)}
               target="_blank"

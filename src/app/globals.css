@@ -783,7 +783,14 @@ img {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: clamp(36px, 5vw, 72px);
-  align-items: start;
+  align-items: stretch;
+}
+
+/* o mapa e mais alto que o texto; empurrar o CTA para o fim da coluna
+   fecha as duas na mesma linha de base em vez de deixar um vao */
+.footer__intro {
+  display: flex;
+  flex-direction: column;
 }
 
 .footer__title {
@@ -812,9 +819,20 @@ img {
   text-wrap: pretty;
 }
 
+/* a folga minima vem daqui, e nao de margin no botao: o auto abaixo pode
+   resolver para zero e encostaria o botao no texto */
+.footer__intro > div {
+  margin-bottom: clamp(28px, 3.5vw, 40px);
+}
+
+/* as duas margens em auto dividem a sobra da coluna acima e abaixo do
+   botao: o titulo continua alinhado ao topo do mapa e o vao nao fica
+   todo empilhado num ponto so */
 .footer__cta {
   display: inline-block;
-  margin-top: clamp(28px, 3.5vw, 40px);
+  align-self: flex-start;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 /* linha de informacoes acima da barra de copyright */
