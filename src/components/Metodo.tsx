@@ -36,8 +36,8 @@ export default function Metodo() {
         </div>
         <div className="metodo__portrait">
           <Image
-            src="/assets/marjana-blazer.svg"
-            alt="Retrato — blazer marinho, luz de janela"
+            src="/assets/marjana-blazer.webp"
+            alt="Marjana Dallagnol — retrato de blazer marinho na luz da janela"
             fill
             sizes="(min-width: 900px) 45vw, 100vw"
           />
