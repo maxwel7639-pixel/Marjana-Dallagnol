@@ -231,12 +231,6 @@ img {
   animation: faixa-scroll 46s linear infinite;
 }
 
-/* deixa ler e clicar o link do Google sem correr atras */
-.faixa:hover .faixa__track,
-.faixa:focus-within .faixa__track {
-  animation-play-state: paused;
-}
-
 .faixa__grupo {
   display: flex;
   align-items: center;
