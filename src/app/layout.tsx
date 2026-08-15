@@ -17,10 +17,30 @@ const karla = Karla({
   display: "swap",
 });
 
+const titulo = "Marjana Dallagnol | Método RQE® — Terapeuta Estrutural Sistêmica";
+const descricao =
+  "Reorganizo a estrutura que sustenta e repete os padrões que travam a sua vida. Terapia estrutural sistêmica online e presencial em Passo Fundo/RS.";
+const site = "https://marjana-dallagnol.vercel.app";
+
 export const metadata: Metadata = {
-  title: "Marjana Dallagnol | Método RQE® — Terapeuta Estrutural Sistêmica",
-  description:
-    "Reorganizo a estrutura que sustenta e repete os padrões que travam a sua vida. Terapia estrutural sistêmica online e presencial em Passo Fundo/RS.",
+  // metadataBase e o que transforma o opengraph-image em URL absoluta:
+  // WhatsApp e redes sociais ignoram og:image relativo
+  metadataBase: new URL(site),
+  title: titulo,
+  description: descricao,
+  openGraph: {
+    type: "website",
+    locale: "pt_BR",
+    url: site,
+    siteName: "Marjana Dallagnol · Espaço Terapêutico",
+    title: titulo,
+    description: descricao,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: titulo,
+    description: descricao,
+  },
 };
 
 export default function RootLayout({
