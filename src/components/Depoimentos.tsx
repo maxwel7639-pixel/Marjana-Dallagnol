@@ -7,11 +7,36 @@ const quotes = [
 ];
 
 const gallery = [
-  { src: "/assets/depoimento-1.svg", alt: "Mensagem de cliente recebida por WhatsApp" },
-  { src: "/assets/depoimento-2.svg", alt: "Mensagem de cliente recebida por WhatsApp" },
-  { src: "/assets/depoimento-3.svg", alt: "Mensagem de cliente recebida por WhatsApp" },
-  { src: "/assets/depoimento-4.svg", alt: "Relato de cliente após análise estrutural" },
-  { src: "/assets/depoimento-5.svg", alt: "Relato de cliente após processo terapêutico" },
+  {
+    src: "/assets/depoimento-1.png",
+    alt: "Mensagem de cliente recebida por WhatsApp",
+    width: 529,
+    height: 742,
+  },
+  {
+    src: "/assets/depoimento-2.png",
+    alt: "Mensagem de cliente recebida por WhatsApp",
+    width: 530,
+    height: 706,
+  },
+  {
+    src: "/assets/depoimento-3.png",
+    alt: "Mensagem de cliente recebida por WhatsApp",
+    width: 526,
+    height: 715,
+  },
+  {
+    src: "/assets/depoimento-4.png",
+    alt: "Relato de cliente após análise estrutural",
+    width: 521,
+    height: 731,
+  },
+  {
+    src: "/assets/depoimento-5.png",
+    alt: "Relato de cliente após processo terapêutico",
+    width: 521,
+    height: 652,
+  },
 ];
 
 export default function Depoimentos() {
@@ -36,7 +61,13 @@ export default function Depoimentos() {
           {gallery.map((img) => (
             <figure className="gallery__item" key={img.src}>
               <div className="gallery__frame">
-                <Image src={img.src} alt={img.alt} width={300} height={400} />
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  width={img.width}
+                  height={img.height}
+                  sizes="(max-width: 640px) 60vw, 240px"
+                />
               </div>
             </figure>
           ))}
