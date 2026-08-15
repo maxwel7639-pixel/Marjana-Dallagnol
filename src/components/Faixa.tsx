@@ -1,4 +1,4 @@
-import { consultorio, mapsLink } from "@/lib/consultorio";
+import { consultorio } from "@/lib/consultorio";
 
 const items = [
   consultorio.categoria,
@@ -22,32 +22,13 @@ function Grupo({ clone = false }: { clone?: boolean }) {
           <span className="faixa__ponto" aria-hidden="true" />
         </span>
       ))}
-
-      <a
-        href={mapsLink}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="faixa__nota"
-        tabIndex={clone ? -1 : undefined}
-      >
-        <span className="faixa__nota-valor">{consultorio.nota}</span>
-        <span className="faixa__nota-texto">
-          <span className="faixa__estrelas" aria-hidden="true">
-            ★★★★★
-          </span>
-          <span className="faixa__nota-label">
-            {consultorio.avaliacoes} avaliações no Google
-          </span>
-        </span>
-      </a>
-      <span className="faixa__ponto" aria-hidden="true" />
     </div>
   );
 }
 
 export default function Faixa() {
   return (
-    <section className="faixa" aria-label="Consultório e avaliações">
+    <section className="faixa" aria-label="Consultório e atendimento">
       <div className="faixa__track">
         <Grupo />
         <Grupo clone />
