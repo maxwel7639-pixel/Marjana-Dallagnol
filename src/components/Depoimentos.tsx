@@ -88,7 +88,7 @@ export default function Depoimentos() {
                   alt={img.alt}
                   width={img.width}
                   height={img.height}
-                  sizes="(max-width: 640px) 60vw, 250px"
+                  sizes="(max-width: 640px) 72vw, 360px"
                 />
               </span>
             </button>

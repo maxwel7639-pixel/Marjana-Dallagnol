@@ -1,6 +1,13 @@
 import Image from "next/image";
 import { waLink, waMessages } from "@/lib/whatsapp";
 
+const points = [
+  "Metodologia própria e registrada",
+  "Devolutiva completa ao fim de cada sessão",
+  "Online ou presencial — a leitura não muda",
+  "O ritmo é definido a partir da primeira leitura",
+];
+
 const steps = [
   {
     title: "Leitura do campo",
@@ -29,6 +36,25 @@ export default function Metodo() {
               vida.
             </p>
           </div>
+          <p className="metodo__text">
+            O RQE® não parte de um roteiro pronto. Cada processo começa pela leitura do que
+            está organizado em você agora — e é essa leitura que define o que precisa ser
+            reorganizado.
+          </p>
+          <p className="metodo__text">
+            O que se repete raramente é falta de esforço. É uma estrutura sustentando a mesma
+            lógica por baixo das escolhas, dos vínculos e do cansaço. Quando ela se reorganiza,
+            o que estava travado encontra outro caminho.
+          </p>
+
+          <ul className="metodo__points">
+            {points.map((point) => (
+              <li className="metodo__point" key={point}>
+                {point}
+              </li>
+            ))}
+          </ul>
+
           <div className="metodo__signature">
             <p className="metodo__signature-name">Marjana Dallagnol</p>
             <p className="metodo__signature-role">Terapeuta Estrutural Sistêmica</p>
