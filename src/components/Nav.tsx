@@ -6,10 +6,10 @@ export default function Nav() {
     <nav className="nav">
       <a href="#top" className="nav__brand">
         <Image
-          src="/assets/logo.svg"
+          src="/assets/logo.png"
           alt="Marjana Dallagnol Espaço Terapêutico"
-          width={220}
-          height={48}
+          width={293}
+          height={111}
           className="nav__logo"
           priority
         />

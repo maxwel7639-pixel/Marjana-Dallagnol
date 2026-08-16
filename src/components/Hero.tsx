@@ -26,8 +26,8 @@ export default function Hero() {
       </div>
       <div className="hero__portrait">
         <Image
-          src="/assets/marjana-blazer.svg"
-          alt="Foto profissional — blazer marinho"
+          src="/assets/marjana-blazer.webp"
+          alt="Marjana Dallagnol — foto profissional de blazer marinho"
           fill
           sizes="(min-width: 900px) 520px, 100vw"
           priority

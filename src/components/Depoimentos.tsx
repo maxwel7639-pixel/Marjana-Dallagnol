@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useCallback, useRef, useState } from "react";
 
 const quotes = [
   "“Cada sessão me ajudou a me entender e a ter clareza do caminho que quero seguir. Não é fácil, ainda tenho coisas para encarar, mas sem a terapia nada teria mudado — e eu não seria essa pessoa que estou me tornando.”",
@@ -7,14 +10,52 @@ const quotes = [
 ];
 
 const gallery = [
-  { src: "/assets/depoimento-1.svg", alt: "Mensagem de cliente recebida por WhatsApp" },
-  { src: "/assets/depoimento-2.svg", alt: "Mensagem de cliente recebida por WhatsApp" },
-  { src: "/assets/depoimento-3.svg", alt: "Mensagem de cliente recebida por WhatsApp" },
-  { src: "/assets/depoimento-4.svg", alt: "Relato de cliente após análise estrutural" },
-  { src: "/assets/depoimento-5.svg", alt: "Relato de cliente após processo terapêutico" },
+  {
+    src: "/assets/depoimento-1.png",
+    alt: "Mensagem de cliente recebida por WhatsApp",
+    width: 529,
+    height: 742,
+  },
+  {
+    src: "/assets/depoimento-2.png",
+    alt: "Mensagem de cliente recebida por WhatsApp",
+    width: 530,
+    height: 706,
+  },
+  {
+    src: "/assets/depoimento-3.png",
+    alt: "Mensagem de cliente recebida por WhatsApp",
+    width: 526,
+    height: 715,
+  },
+  {
+    src: "/assets/depoimento-4.png",
+    alt: "Relato de cliente após análise estrutural",
+    width: 521,
+    height: 731,
+  },
+  {
+    src: "/assets/depoimento-5.png",
+    alt: "Relato de cliente após processo terapêutico",
+    width: 521,
+    height: 652,
+  },
 ];
 
 export default function Depoimentos() {
+  const dialogRef = useRef<HTMLDialogElement>(null);
+  const [active, setActive] = useState<(typeof gallery)[number] | null>(null);
+
+  const open = useCallback((item: (typeof gallery)[number]) => {
+    setActive(item);
+    dialogRef.current?.showModal();
+  }, []);
+
+  // clique no backdrop: o alvo só é o próprio <dialog> fora do conteúdo
+  const onDialogClick = useCallback((event: React.MouseEvent<HTMLDialogElement>) => {
+    if (event.target === dialogRef.current) dialogRef.current?.close();
+  }, []);
+
   return (
     <section id="depoimentos" className="depoimentos">
       <div className="depoimentos__inner">
@@ -34,18 +75,61 @@ export default function Depoimentos() {
 
         <div className="gallery">
           {gallery.map((img) => (
-            <figure className="gallery__item" key={img.src}>
-              <div className="gallery__frame">
-                <Image src={img.src} alt={img.alt} width={300} height={400} />
-              </div>
-            </figure>
+            <button
+              type="button"
+              className="gallery__item"
+              key={img.src}
+              onClick={() => open(img)}
+              aria-label={`Ampliar: ${img.alt}`}
+            >
+              <span className="gallery__frame">
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  width={img.width}
+                  height={img.height}
+                  sizes="(max-width: 640px) 72vw, 360px"
+                />
+              </span>
+            </button>
           ))}
         </div>
-        <p className="gallery__caption">Mensagens recebidas · arraste para o lado</p>
+        <p className="gallery__caption">Mensagens recebidas · toque para ampliar</p>
         <p className="depoimentos__note">
           Relatos recebidos por mensagem, publicados com autorização e sem identificação.
         </p>
       </div>
+
+      <dialog
+        ref={dialogRef}
+        className="lightbox"
+        onClick={onDialogClick}
+        onClose={() => setActive(null)}
+      >
+        {active && (
+          <div className="lightbox__inner">
+            <button
+              type="button"
+              className="lightbox__close"
+              onClick={() => dialogRef.current?.close()}
+              aria-label="Fechar"
+            >
+              ×
+            </button>
+            {/* sizes casa com o candidato de 640w do srcset de proposito: se os
+                dois divergem o browser aplica um fator de densidade e encolhe o
+                tamanho intrinseco, abrindo a imagem menor que o original. */}
+            <Image
+              src={active.src}
+              alt={active.alt}
+              width={active.width}
+              height={active.height}
+              sizes="640px"
+              className="lightbox__image"
+            />
+          </div>
+        )}
+      </dialog>
     </section>
   );
 }
